@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Asegurar que el encabezado Authorization esté disponible (necesario para JWT)
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+# Redirigir todas las peticiones que no sean archivos o directorios reales a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
