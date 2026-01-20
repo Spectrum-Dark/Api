@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Core\Database;
-
-use App\Core\Helpers\Response;
 use PDO;
 
 class MySQL
@@ -12,7 +10,7 @@ class MySQL
 
     // Configuración de la base de datos
     private $Host = 'localhost';
-    private $DB  = 'horario';
+    private $DB  = 'panel_fenix';
     private $User = 'root';
     private $Pass = '';
     private $Charset = 'utf8mb4';
@@ -55,7 +53,7 @@ class MySQL
             $stmt->execute($Params);
             return $stmt;
         } catch (\PDOException $e) {
-            Response::Json(500, "Error al ejecutar la consulta", [$e->getMessage()]);
+            throw new \Exception("Error en BD: " . $e->getMessage());
         }
     }
 }
