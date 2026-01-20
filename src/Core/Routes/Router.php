@@ -19,9 +19,13 @@ class Router
 
     private function add(string $method, string $uri, callable $action, array $middleware)
     {
+        /* Concatenamos y limpiamos dobles slashes (//) para evitar errores de ruta */
+        $path = $this->prefix . $uri;
+        $path = str_replace('//', '/', $path);
+
         $this->routes[] = [
             'method' => $method,
-            'uri' => $this->prefix . $uri,
+            'uri' => $path,
             'action' => $action,
             'middleware' => $middleware
         ];

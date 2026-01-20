@@ -10,12 +10,18 @@ use App\Core\Middlewares\AuthMiddleware;
 
 /* Controladores */
 use App\Controllers\UserController;
+use App\Controllers\ApiController;
 
 /* Instanciamos el enrutador*/
 
 $Route = new Router;
 
 /* Prefijos URL */
+
+$Route->prefix("", function ($App) {
+    $App->get('/', [new ApiController, 'Index']);
+});
+
 $Route->prefix('/Users/Action', function ($App) {
     $App->post('/Show', [new UserController(), 'Show']);
     $App->post('/Insert', [new UserController(), 'Insert']);
