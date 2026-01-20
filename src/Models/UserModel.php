@@ -20,4 +20,17 @@ class UserModel
         ];
         return $Users;
     }
+
+    public function Login()
+    {
+        $Users = [
+            [
+                "id" => 1,
+                "name" => "Juan",
+                "email" => "juan@example.com"
+            ],
+        ];
+
+        return $Users;
+    }
 }

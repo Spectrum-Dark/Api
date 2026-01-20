@@ -13,7 +13,7 @@ class JwtConfig
 
     public static function alg(): string
     {
-        return $_ENV['JWT_ALGO'];
+        return $_ENV['JWT_ALG'];
     }
     
     public static function exp(): int

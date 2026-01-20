@@ -16,7 +16,8 @@ $Route = new Router;
 /* Prefijos */
 $Route->prefix('/Server/HDP', function($App){
     $App->get('/List', [new UserController(), 'Index']);
-    $App->get('/List/Access', [new UserController(), 'Index'], [AuthMiddleware::class]);
+    //$App->get('/List/Access', [new UserController(), 'Auth'], [AuthMiddleware::class]);
+    $App->get('/List/Access', [new UserController(), 'Auth']);
 });
 
 $Route->run();
